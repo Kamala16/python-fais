@@ -1,3 +1,6 @@
+import unittest
+
+
 class Time:
     """Klasa reprezentująca odcinek czasu."""
 
@@ -34,11 +37,11 @@ class Time:
         return self.s <= other.s
 
     # nadmiarowe
-    #def __gt__(self, other):
+    # def __gt__(self, other):
     #    return self.s > other.s
 
     # nadmiarowe
-    #def __ge__(self, other):
+    # def __ge__(self, other):
     #    return self.s >= other.s
 
     def __int__(self):                  # int(time1)
@@ -47,11 +50,10 @@ class Time:
 
 # Kod testujący moduł.
 
-import unittest
 
 class TestTime(unittest.TestCase):
 
-    def setUp(self): 
+    def setUp(self):
         self.jeden = Time(3600)
         self.dwa = Time(3601)
         self.trzy = Time(3665)
@@ -66,12 +68,10 @@ class TestTime(unittest.TestCase):
         self.assertEqual(repr(self.dwa), 'Time(3601)')
         self.assertEqual(repr(self.trzy), 'Time(3665)')
         self.assertEqual(repr(self.cztery), 'Time(18540)')
-        
 
     def test_add(self):
-        #self.assertEqual(Time(1) + Time(2), Time(3))
+        # self.assertEqual(Time(1) + Time(2), Time(3))
         self.assertEqual(self.jeden + self.dwa, Time(7201))
-
 
     def test_cmp(self):
         # Można sprawdzać ==, !=, >, >=, <, <=.
@@ -83,6 +83,7 @@ class TestTime(unittest.TestCase):
         self.assertEqual(int(Time(55)), 55)
 
     def tearDown(self): pass
+
 
 if __name__ == "__main__":
     unittest.main()     # wszystkie testy
