@@ -35,15 +35,15 @@ class SortedList:
         if self.length == 0:
             self.head = self.tail = node
         else:
-            if self.head.data > node.data:
+            if self.head.data < node.data:
                 node.next = self.head
                 self.head = node
-            elif self.tail.data < node.data:
+            elif self.tail.data > node.data:
                 self.tail.next = node
                 self.tail = node
             else:
                 tempNode = self.head
-                while tempNode.next.data < node.data:
+                while tempNode.next.data > node.data:
                     tempNode = tempNode.next
                 node.next = tempNode.next
                 tempNode.next = node
@@ -59,11 +59,8 @@ class SortedList:
             self.length = 0
             return node
         else:
-            node = self.tail
-            tempNode = self.head
-            while tempNode.next != self.tail:
-                tempNode = tempNode.next
-            self.tail = tempNode
+            node = self.head
+            self.head = self.head.next
             return node
 
     def merge(self, other):  # scalanie dwóch list posortowanych
@@ -78,6 +75,7 @@ class SortedList:
             tempNode = tempNode.next
         self.insert(tempNode)
         self.insert(other.tail)
+        other.clear()
         return self
 
     def clear(self):        # czyszczenie listy
@@ -100,9 +98,9 @@ M.insert(Node(1))
 M.insert(Node(3))
 M.insert(Node(8))
 print(str(L))
-print(M)
-M.merge(L)
+print(str(M))
+L.merge(M)
 print(str(L))
-print(M)
+print(str(M))
 L.clear()
 print(str(L))
