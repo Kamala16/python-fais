@@ -1,7 +1,7 @@
 import random
 
 def moda():
-    L = ListSortCreate()
+    L = ListCreate()
     iloscM = 1
     maxM = 0
     for item in range (0, len(L)-1):
@@ -14,18 +14,16 @@ def moda():
                 maxM = iloscM
                 moda = L[item]
             iloscM = 1
-    return moda
+    print(" moda to {}".format(moda))
 
-def ListSortCreate():
+def ListCreate():
     k = int(input("podaj zakres liczb naturalnych: "))
     ilosc = int(input("podaj ilość liczb: "))
     L = []
     for item in range (0, ilosc):
         rand = int(random.uniform(0, k-1))
         L.append(rand)
-    print(L)
     bubbleSort(L)
-    print(L)
     return L
 
 def bubbleSort(L):
