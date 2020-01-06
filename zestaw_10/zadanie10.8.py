@@ -8,17 +8,17 @@ class RandomQueue:
         self.size = size
 
     def insert(self, item):
-        if self.is_full() == True:
+        if self.is_full():
             raise ValueError ("Kolejka pełna")
         self.items[self.n] = item
         self.n += 1
 
     def remove(self):   # zwraca losowy element
-        if self.is_empty() == True:
+        if self.is_empty():
             raise ValueError ("Kolejka pusta")
         index = int(random.uniform(0, self.n-1))
         temp = self.items[index]
-        self.items[index:self.n-1] = self.items[index+1:self.n-2]
+        self.items[index] = self.items[self.n-1]
         self.items[self.n-1] = None
         self.n -= 1
         return temp
@@ -30,9 +30,9 @@ class RandomQueue:
         return self.size == self.n
 
     def clear(self):    # czyszczenie listy
-        if self.is_empty() == True:
+        if self.is_empty():
             raise ValueError ("Kolejka pusta")
-        while self.is_empty() == False:
+        while self.is_empty():
             self.items[self.n-1] = None
             self.n -= 1
 

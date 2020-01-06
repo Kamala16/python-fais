@@ -12,13 +12,13 @@ class Stack:
         return self.size == self.n
 
     def push(self, data):
-        if self.is_full() == True:
+        if self.is_full():
             raise ValueError("Stos jest pełny")
         self.items[self.n] = data
         self.n += 1
 
     def pop(self):
-        if self.is_empty() == True:
+        if self.is_empty():
             raise ValueError("Stos jest pusty")
         self.n -= 1
         data = self.items[self.n]
