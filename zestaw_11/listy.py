@@ -47,7 +47,7 @@ def int_k(numberMax):
     intNumberList = []
     zbiorKMax = math.sqrt(numberMax)
     for item in range (numberMax):
-        intNumberList.append(random.uniform(0, zbiorKMax))
+        intNumberList.append(random.randrange(0, zbiorKMax))
     # plt.plot(range(numberMax), intNumberList, 'o')
     # plt.show()
     return intNumberList    
