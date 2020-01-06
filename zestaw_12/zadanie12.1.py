@@ -5,8 +5,7 @@ def wyszukiwanieLiniowe():
     ilosc = int(input("podaj ilość liczb: "))
     L = []
     for item in range (0, ilosc):
-        rand = int(random.uniform(0, k-1))
-        L.append(rand)
+        L.append(int(random.uniform(0, k-1)))
     print(L)
     y = int(random.uniform(0, k-1))
     print("wyszukawana liczba: {}".format(y))
@@ -14,6 +13,11 @@ def wyszukiwanieLiniowe():
     for item in range (0, ilosc):
         if L[item] == y:
             listaY.append(item)
-    return listaY
+    if len(listaY) == 0:
+        print("ta liczba nie znajduje się w tablicy")
+    else:
+        print("szukana liczba znajduje się w tablicy w komórkach o indeksach:")
+        print(listaY)
+
     
-print(wyszukiwanieLiniowe())
+wyszukiwanieLiniowe()
