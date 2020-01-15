@@ -1,8 +1,6 @@
 import random
 
-def wyszukiwanieLiniowe():
-    k = int(input("podaj zakres liczb naturalnych: "))
-    ilosc = int(input("podaj ilość liczb: "))
+def wyszukiwanieLiniowe(k, ilosc):
     L = []
     for item in range (0, ilosc):
         L.append(int(random.uniform(0, k-1)))
@@ -19,5 +17,6 @@ def wyszukiwanieLiniowe():
         print("szukana liczba znajduje się w tablicy w komórkach o indeksach:")
         print(listaY)
 
-    
-wyszukiwanieLiniowe()
+k = int(input("podaj zakres liczb naturalnych: "))
+ilosc = int(input("podaj ilość liczb: "))
+wyszukiwanieLiniowe(k, ilosc)
