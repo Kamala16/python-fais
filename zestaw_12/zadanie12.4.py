@@ -1,6 +1,7 @@
 import random
 
-def moda_sort(L, left, right):
+def moda_sort(L, left, right): 
+    quicksort(L, 0, len(L)-1)
     if left+1 > right:
         return None
     mode = None
@@ -23,7 +24,6 @@ def ListCreate(k, ilosc):
     for item in range (0, ilosc):
         rand = int(random.uniform(0, k-1))
         L.append(rand)
-    quicksort(L, 0, len(L)-1)
     return L
 
 def quicksort(L, left, right):
