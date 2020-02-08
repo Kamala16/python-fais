@@ -1,3 +1,7 @@
+"""Algorytm Prima
+
+Aleksandra Chrzanowska"""
+
 import random
 
 def algorytmPrima(listaSasiedztwa):
@@ -8,9 +12,9 @@ def algorytmPrima(listaSasiedztwa):
     
     for item in listaSasiedztwa:
         wierzcholki.append(item)
-
+    
     wierzcholkiOdzwiedzone.append(wierzcholki[0])
-        
+
     while len(wierzcholki) != len(wierzcholkiOdzwiedzone):
         minWaga = float("inf")
         for item in wierzcholkiOdzwiedzone:
@@ -23,8 +27,6 @@ def algorytmPrima(listaSasiedztwa):
                         rodzic = item
         wpisywanieDoGrafu(minDrzewo, rodzic, minSasiad, minWaga)
         wierzcholkiOdzwiedzone.append(minSasiad)
-
-    zapiszDoPliku(minDrzewo)
     return minDrzewo
 
 def wpisywanieDoGrafu(graf, wierzcholek, sasiad, waga):
@@ -44,10 +46,10 @@ def wypisywanieStr(lista):
         drzewo = drzewo + "\n" + wierzcholek
     return drzewo
 
-def wczytajZPliku():
+def wczytajZPliku(nazwaPliku):
     """Funckja do wczytywania grafów z pliku w formie listy sasiedztwa"""
     listaSasiedztwa = {}
-    plik = open("listaSasiedztwa.txt", 'r')
+    plik = open(nazwaPliku, 'r')
     for line in plik:
         wierzcholek, sasiedzi = line.split(":")
         sasiedzi = sasiedzi.strip()
@@ -59,9 +61,9 @@ def wczytajZPliku():
     plik.close()
     return listaSasiedztwa
 
-def zapiszDoPliku(minDrzewo):
+def zapiszDoPliku(minDrzewo, nazwaPliku):
     """Funkcja do zapisywania minimalnego drzewa dla podanego grafu w formie listy sąsiedztwa"""
-    plik = open("minDrzewo.txt", 'w')
+    plik = open(nazwaPliku, 'w')
     plik.write("Lista sasiedztwa minimalnego drzewa dla podanego grafu:\n")
     plik.write(wypisywanieStr(minDrzewo))
     plik.close()
@@ -86,19 +88,25 @@ def generujGraf(liczbaWierzcholkow, maxWaga):
 
 def main():
     x = int(input("Wybierz opcję:\n1. Wczytaj graf z pliku.\n2. Wygeneruj losowy graf.\n3. Zakoncz program.\n"))
-    if x == 1:
-        algorytmPrima(wczytajZPliku())
-        print("Minimalne drzewo zostało zapisane do pliku")
-    elif x == 2:
-        liczbaWierzcholkow = int(input("Podaj liczbę wierzchołków dla grafu: "))
-        maxWaga = int(input("Podaj maksymalna wartość krawędzi: "))
-        algorytmPrima(generujGraf(liczbaWierzcholkow, maxWaga))
-        print("Minimalne drzewo zostało zapisane do pliku")
-    elif x == 3:
-        return 0
-    else:
-        print("Nie wybrałeś żadnej z dostępnych opcji.\n")
-    main()
+    while x != 3:
+        if x == 1:
+            nazwaPlikuWczytaj = input("Podaj nazwę pliku do wczytania:\n")
+            lista = wczytajZPliku(nazwaPlikuWczytaj)
+            minDrzewo = algorytmPrima(lista)
+            nazwaPlikuZapisz = input("Podaj nazwę pliku do zapisania:\n")
+            zapiszDoPliku(minDrzewo, nazwaPlikuZapisz)
+            print("Minimalne drzewo zostało zapisane do pliku")
+        elif x == 2:
+            liczbaWierzcholkow = int(input("Podaj liczbę wierzchołków dla grafu: "))
+            maxWaga = int(input("Podaj maksymalna wartość krawędzi: "))
+            algorytmPrima(generujGraf(liczbaWierzcholkow, maxWaga))
+            nazwaPlikuZapisz = input("Podaj nazwę pliku do zapisania:\n")
+            zapiszDoPliku(minDrzewo, nazwaPlikuZapisz)
+            print("Minimalne drzewo zostało zapisane do pliku")
+        else:
+            print("Nie wybrałeś żadnej z dostępnych opcji.\n")
+        x = int(input("Wybierz opcję:\n1. Wczytaj graf z pliku.\n2. Wygeneruj losowy graf.\n3. Zakoncz program.\n"))
+    return 0
 
 if __name__ == "__main__":
     main()
