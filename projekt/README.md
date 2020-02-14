@@ -10,10 +10,11 @@ Algorytm służący do obliczania minimalnego drzewa rozpinającego dla podanego
   - [Spis funkcji](#spis-funkcji)
       - [Algorytm Prima](#algorytm-prima-1)
       - [Wpisywanie do grafu](#wpisywanie-do-grafu)
-      - [Wypisawnie stringa](#wypisawnie-stringa)
+      - [Wypisywanie stringa](#wypisywanie-stringa)
       - [Wczytaj z pliku](#wczytaj-z-pliku)
       - [Zapisz do Pliku](#zapisz-do-pliku)
       - [Generuj graf](#generuj-graf)
+  - [Źródła](#%c5%b9r%c3%b3d%c5%82a)
 
 ## Opis algorytmu
 
@@ -70,7 +71,7 @@ def wpisywanieDoGrafu(graf, wierzcholek, sasiad, waga):
     """Funkcja do tworzenia grafu w postaci (dict+dict)"""
     # ...
 ```
-#### Wypisawnie stringa
+#### Wypisywanie stringa
 Funkcja po otrzymaniu grafu w postaci (dict+dict) zwraca listę sąsiedztwa jako string
 ```Python
 def wypisywanieStr(lista):
@@ -101,3 +102,6 @@ def generujGraf(liczbaWierzcholkow, maxWaga):
     # ...
     return graf
 ```
+
+## Źródła
+Wprowadzenie do algorytmów, Cormen Thomas H., Leiseron Charles E., Riverst Ronald L. Clifford Stein

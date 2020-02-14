@@ -26,6 +26,7 @@ def algorytmPrima(listaSasiedztwa):
                         minSasiad = sasiad[0]
                         rodzic = item
         wpisywanieDoGrafu(minDrzewo, rodzic, minSasiad, minWaga)
+        wpisywanieDoGrafu(minDrzewo, minSasiad, rodzic, minWaga)
         wierzcholkiOdzwiedzone.append(minSasiad)
     return minDrzewo
 
@@ -99,7 +100,7 @@ def main():
         elif x == 2:
             liczbaWierzcholkow = int(input("Podaj liczbę wierzchołków dla grafu: "))
             maxWaga = int(input("Podaj maksymalna wartość krawędzi: "))
-            algorytmPrima(generujGraf(liczbaWierzcholkow, maxWaga))
+            minDrzewo = algorytmPrima(generujGraf(liczbaWierzcholkow, maxWaga))
             nazwaPlikuZapisz = input("Podaj nazwę pliku do zapisania:\n")
             zapiszDoPliku(minDrzewo, nazwaPlikuZapisz)
             print("Minimalne drzewo zostało zapisane do pliku")
